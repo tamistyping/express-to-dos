@@ -6,7 +6,10 @@ module.exports = {
 };
 
 function show(req, res){
-    res.render('todos/show', { todo: Todo.getOne(req.params.id) })
+    res.render('todos/show', {
+    todo: Todo.getOne(req.params.id),
+    title: 'To-Do Details' 
+  })
 }
 
 function index(req, res) {
