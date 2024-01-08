@@ -6,8 +6,25 @@ const todos = [
 	
   module.exports = {
     getAll,
-    getOne
+    getOne,
+    create,
+    deleteOne
   };
+
+  function deleteOne(id){
+    id = parseInt(id)
+    //find index for todo
+    const idx = todos.findIndex(todo => todo.id === id)
+    todos.splice(idx, 1)
+  }
+
+  function create(todo){
+    //add the ID
+    todo.id = Date.now() % 1000000
+    todo.done = false
+    todos.push(todo)
+  }
+
 
   function getOne(id){
     id = parseInt(id)

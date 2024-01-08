@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var methodOverride = require('method-override')
 
 var indexRouter = require('./routes/index');
 var todosRouter = require('./routes/todos');
@@ -37,6 +38,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // if the request is for a static asset, return the file 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(methodOverride('_method'))
 
 //the first arg is the "starts with" path
 //the paths within the route modules are combined
